@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Экскурсия по Праге — школьный проект. Маршрут, история, интересные факты и викторина." />
+  <title>Экскурсия по Праге — проект 9 класс</title>
+
+  <!-- Favicon (замените путь на свой) -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <style>
+    :root{
+      --bg:#fbfbfc;
+      --card:#ffffff;
+      --accent:#2f6b8f;
+      --accent-2:#f0a500;
+      --muted:#6b6b6b;
+      --radius:12px;
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:linear-gradient(180deg,var(--bg),#f6f8fa);
+      color:#111;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+    a{color:var(--accent);text-decoration:none}
+    header{
+      background:linear-gradient(90deg, rgba(47,107,143,0.06), rgba(240,165,0,0.04));
+      backdrop-filter: blur(4px);
+      position:sticky; top:0; z-index:50;
+      border-bottom:1px solid rgba(0,0,0,0.04);
+    }
+    .container{max-width:var(--maxw); margin:0 auto; padding:20px;}
+    .nav{
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+    }
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo{
+      width:52px; height:52px; border-radius:10px; background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:inline-flex; align-items:center; justify-content:center; color:white; font-weight:700;
+      box-shadow: 0 6px 18px rgba(47,107,143,0.08);
+    }
+    nav ul{display:flex; gap:14px; list-style:none; padding:0; margin:0; align-items:center}
+    nav li a{padding:10px 12px; border-radius:8px; font-weight:600; color:rgba(0,0,0,0.7)}
+    nav li a:hover{background:rgba(47,107,143,0.08); color:var(--accent)}
+    .hero{
+      display:grid; grid-template-columns:1fr 420px; gap:28px; align-items:center; padding:36px 0;
+    }
+    .hero h1{margin:0; font-size:28px;}
+    .hero p{color:var(--muted); margin-top:10px}
+    .cta{margin-top:18px; display:flex; gap:12px; flex-wrap:wrap}
+    .btn{
+      background:var(--accent); color:white; padding:10px 16px; border-radius:10px; font-weight:700; border:0; cursor:pointer;
+      box-shadow: 0 6px 16px rgba(47,107,143,0.12)
+    }
+    .btn.alt{background:transparent; color:var(--accent); border:2px solid rgba(47,107,143,0.08); font-weight:700}
+    .card{background:var(--card); border-radius:var(--radius); padding:18px; box-shadow:0 6px 20px rgba(11,20,30,0.04)}
+    .small{font-size:13px; color:var(--muted)}
+    /* grid sections */
+    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:18px}
+    .grid .card{min-height:120px}
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      nav ul{display:none}
+      .menu-toggle{display:inline-block}
+    }
+    @media (max-width:600px){
+      .grid{grid-template-columns:1fr}
+      .hero h1{font-size:22px}
+      .logo{width:46px;height:46px}
+    }
+
+    /* content blocks */
+    section{padding:36px 0}
+    h2{margin:0 0 12px 0; font-size:20px}
+    .route-item{display:flex; gap:12px; align-items:flex-start; padding:12px 0; border-bottom:1px dashed rgba(0,0,0,0.04)}
+    .route-item img{width:120px; height:80px; object-fit:cover; border-radius:8px; flex-shrink:0}
+    .route-meta{font-size:13px; color:var(--muted)}
+    .facts{display:flex; gap:12px; flex-wrap:wrap}
+    .fact{flex:1 1 200px; background:linear-gradient(180deg,#fff,#fbfbff); padding:12px; border-radius:10px; min-width:180px}
+    .gallery{display:grid; grid-template-columns:repeat(4,1fr); gap:8px}
+    .gallery img{width:100%; height:140px; object-fit:cover; border-radius:8px}
+    @media (max-width:900px){ .gallery{grid-template-columns:repeat(2,1fr)} }
+
+    /* quiz */
+    .quiz .question{margin-bottom:12px}
+    .options label{display:block; padding:8px 10px; margin:6px 0; border-radius:8px; background:#fbfbfb; cursor:pointer; border:1px solid rgba(0,0,0,0.04)}
+    .result{padding:12px; border-radius:10px; margin-top:12px}
+    .topbar-actions{display:flex; gap:12px; align-items:center}
+    .menu-toggle{display:none; background:transparent; border:0; font-size:20px; padding:8px}
+    /* footer */
+    footer{padding:24px 0; color:var(--muted); font-size:14px}
+    .sources{display:flex; gap:12px; flex-wrap:wrap}
+    .chip{background:#fff; padding:6px 10px; border-radius:999px; border:1px solid rgba(0,0,0,0.03); font-size:13px}
+    /* small helpers */
+    .muted{color:var(--muted)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">EP</div>
+        <div>
+          <div style="font-weight:800">Экскурсия по Праге</div>
+          <div class="small">Проект 9 класс · 2025–2026</div>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <button class="menu-toggle" aria-label="Открыть меню" onclick="toggleMenu()">☰</button>
+        <nav aria-label="Главное навигационное меню">
+          <ul id="mainMenu">
+            <li><a href="#home">Главная</a></li>
+            <li><a href="#history">История</a></li>
+            <li><a href="#route">Маршрут</a></li>
+            <li><a href="#gallery">Галерея</a></li>
+            <li><a href="#quiz">Викторина</a></li>
+            <li><a href="#about">О проекте</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section id="home" class="hero" aria-labelledby="heroTitle">
+      <div>
+        <h1 id="heroTitle">Экскурсия по Праге — путеводитель для школьников</h1>
+        <p>Краткая авторская экскурсия по самым знаменитым местам Праги: маршруты, исторические сведения и проверочная викторина. Подготовлено ученицей/учеником 9 класса для всероссийского проекта.</p>
+        <div class="cta">
+          <a class="btn" href="#route">Начать маршрут</a>
+          <button class="btn alt" onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'})">Пройти викторину</button>
+        </div>
+
+        <div class="grid" aria-hidden="false" style="margin-top:18px">
+          <div class="card">
+            <strong>Цель проекта</strong>
+            <p class="small">Познакомить школьников с историей Праги, показать логический маршрут и развить интерес к путешествиям и культуре.</p>
+          </div>
+          <div class="card">
+            <strong>Задачи</strong>
+            <ul class="small" style="margin:8px 0 0 18px;padding:0">
+              <li>Разработать экскурсионный маршрут</li>
+              <li>Подготовить информационные блоки</li>
+              <li>Создать интерактивный тест</li>
+            </ul>
+          </div>
+          <div class="card">
+            <strong>Как пользоваться</strong>
+            <p class="small">Кнопки ведут к нужным разделам; карту можно увеличить. Викторина даёт мгновенный результат.</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card" aria-label="Быстрая карта и контакты">
+        <div style="font-weight:700">Карта центра Праги</div>
+        <div style="font-size:13px; color:var(--muted); margin-bottom:8px">Отметки ключевых точек маршрута</div>
+        <!-- OpenStreetMap embed (работает без API) -->
+        <div style="border-radius:10px; overflow:hidden; margin-bottom:8px; border:1px solid rgba(0,0,0,0.04)">
+          <iframe title="Карта Праги" src="https://www.openstreetmap.org/export/embed.html?bbox=14.36%2C50.02%2C14.51%2C50.11&amp;layer=mapnik&amp;marker=50.0755%2C14.4378"
+            style="width:100%; height:220px; border:0"></iframe>
+        </div>
+        <div class="small muted">Подпись: центр Праги (Пражский Град и Карлов мост находятся в отмеченной области).</div>
+      </aside>
+    </section>
+
+
+  <main class="container">
+    <!-- HERO -->
+    <section id="home" class="hero" aria-labelledby="heroTitle">
+      <div>
+        <h1 id="heroTitle">Экскурсия по Праге — путеводитель для школьников</h1>
+        <p>Краткая авторская экскурсия по самым знаменитым местам Праги: маршруты, исторические сведения и проверочная викторина. Подготовлено ученицей/учеником 9 класса для всероссийского проекта.</p>
+        <div class="cta">
+          <a class="btn" href="#route">Начать маршрут</a>
+          <button class="btn alt" onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'})">Пройти викторину</button>
+        </div>
+
+        <div class="grid" aria-hidden="false" style="margin-top:18px">
+          <div class="card">
+            <strong>Цель проекта</strong>
+            <p class="small">Познакомить школьников с историей Праги, показать логический маршрут и развить интерес к путешествиям и культуре.</p>
+          </div>
+          <div class="card">
+            <strong>Задачи</strong>
+            <ul class="small" style="margin:8px 0 0 18px;padding:0">
+              <li>Разработать экскурсионный маршрут</li>
+              <li>Подготовить информационные блоки</li>
+              <li>Создать интерактивный тест</li>
+            </ul>
+          </div>
+          <div class="card">
+            <strong>Как пользоваться</strong>
+            <p class="small">Кнопки ведут к нужным разделам; карту можно увеличить. Викторина даёт мгновенный результат.</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card" aria-label="Быстрая карта и контакты">
+        <div style="font-weight:700">Карта Карлов мост</div>
+        <div style="font-size:13px; color:var(--muted); margin-bottom:8px">Отметки ключевых точек маршрута</div>
+        <!-- OpenStreetMap embed (работает без API) -->
+        <div style="border-radius:10px; overflow:hidden; margin-bottom:8px; border:1px solid rgba(0,0,0,0.04)">
+		<iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=14.40634846687317%2C50.08514131577357%2C14.413429498672487%2C50.08811517295398&amp;layer=mapnik" 		style="border: 1px solid black"></iframe>
+        </div>
+        <div class="small muted">Подпись: центр Праги (Карлов мост находятся в отмеченной области).</div>
+      </aside>
+    </section>
+
+    <!-- HISTORY -->
+    <section id="history">
+      <h2>История Праги — сжатый обзор</h2>
+      <p class="muted">Разделён по эпохам: кратко и ёмко — для школьного доклада.</p>
+
+      <div class="card" style="margin-top:12px">
+        <h3 style="margin-top:0">Средние века</h3>
+        <p class="small">Прага формировалась как важный торговый и политический центр Богемии. В это время были заложены основы городской застройки, построен Пражский Град.</p>
+      </div>
+
+      <div class="card" style="margin-top:12px">
+        <h3 style="margin-top:0">Ренессанс и барокко</h3>
+        <p class="small">Город обогатился архитектурными стилями: готика уступила место ренессансу и барокко, появились знаменитые соборы и площади.</p>
+      </div>
+
+      <div class="card" style="margin-top:12px">
+        <h3 style="margin-top:0">Новое время</h3>
+        <p class="small">Прага стала важным центром чешской культуры и науки; сыграла роль в событиях XX века, включая становление Чехословакии и переход к современной городской культуре.</p>
+      </div>
+    </section>
+
+    <!-- ROUTE -->
+    <section id="route">
+      <h2>Маршрут экскурсии — 7 ключевых точек</h2>
+      <p class="muted">Продуманная прогулка длительностью ~2–3 часа (пешком с остановками).</p>
+
+      <div class="card" style="margin-top:12px">
+        <!-- Route items -->
+        <div class="route-item" id="r1">
+          <img src="images/prazsky-grad.jpg" alt="Пражский Град (пример изображения)">
+          <div>
+            <strong>1. Пражский Град</strong>
+            <div class="route-meta">Старейшая часть города, собор Святого Вита, коронационные залы.</div>
+            <p class="small">Совет: приходите утром, чтобы избежать толп. Краткая история — место правителей Богемии.</p>
+          </div>
+        </div>
+
+        <div class="route-item" id="r2">
+          <img src="images/karluv-most.jpg" alt="Карлов мост">
+          <div>
+            <strong>2. Карлов мост</strong>
+            <div class="route-meta">Знаменитая готическая переправа через Влтаву с барочными статуями.</div>
+            <p class="small">Фотозона: закат над Влтавой — идеальное время для фото.</p>
+          </div>
+        </div>
+
+        <div class="route-item" id="r3">
+          <img src="images/staromestske-namesti.jpg" alt="Староместская площадь">
+          <div>
+            <strong>3. Староместская площадь</strong>
+            <div class="route-meta">Историческое сердце города с Астрономическими часами.</div>
+            <p class="small">Не пропустите: смена фигур на часах каждый час — можно включить в экскурсию.</p>
+          </div>
+        </div>
+
+        <div class="route-item" id="r4">
+          <img src="images/orloj.jpg" alt="Астрономические часы">
+          <div>
+            <strong>4. Астрономические часы</strong>
+            <div class="route-meta">Средневековый механизм, показывающий небесные циклы и фигуры.</div>
+            <p class="small">Краткая легенда и практическое значение для жителей средневековой Праги.</p>
+          </div>
+        </div>
+
+        <div class="route-item" id="r5">
+          <img src="images/vaclavske-namesti.jpg" alt="Вацлавская площадь">
+          <div>
+            <strong>5. Вацлавская площадь</strong>
+            <div class="route-meta">Современный центр с музеями и торговыми улицами.</div>
+            <p class="small">Подойдёт для остановки на обед и изучения современных аспектов Праги.</p>
+          </div>
+        </div>
+
+        <div class="route-item" id="r6">
+          <img src="images/narodni-muzeum.jpg" alt="Национальный музей">
+          <div>
+            <strong>6. Национальный музей</strong>
+            <div class="route-meta">Культурное пространство с выставками по истории Чехии.</div>
+            <p class="small">Рекомендуется короткая обзорная экскурсия по залам.</p>
+          </div>
+        </div>
+
+        <div class="route-item" id="r7">
+          <img src="images/television-tower.jpg" alt="Пражская телебашня">
+          <div>
+            <strong>7. Пражская телебашня</strong>
+            <div class="route-meta">Современная архитектура и вид на город.</div>
+            <p class="small">Альтернативная точка обзора для завершения экскурсии.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+      <h2>Галерея — иллюстрации маршрута</h2>
+      <p class="muted">Замените изображения в папке <code>/images</code> своими фотографиями или референсами.</p>
+      <div class="gallery" style="margin-top:12px" aria-label="Фотогалерея">
+        <img src="images/g1.jpg" alt="Фото 1">
+        <img src="images/g2.jpg" alt="Фото 2">
+        <img src="images/g3.jpg" alt="Фото 3">
+        <img src="images/g4.jpg" alt="Фото 4">
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="quiz">
+      <h2>Викторина: Проверим знания о Праге</h2>
+      <div class="card quiz" style="margin-top:12px">
+        <form id="quizForm" onsubmit="return false" aria-label="Викторина по Праге">
+          <!-- Question 1 -->
+          <div class="question" data-q="1">
+            <strong>1. Как называется знаменитый мост через Влтаву?</strong>
+            <div class="options">
+              <label><input type="radio" name="q1" value="a"> Мост Карела</label>
+              <label><input type="radio" name="q1" value="b"> Карлов мост</label>
+              <label><input type="radio" name="q1" value="c"> Мост Вацлава</label>
+            </div>
+          </div>
+
+          <!-- Question 2 -->
+          <div class="question" data-q="2">
+            <strong>2. Где находится Астрономические часы (Орлой)?</strong>
+            <div class="options">
+              <label><input type="radio" name="q2" value="a"> На Вацлавской площади</label>
+              <label><input type="radio" name="q2" value="b"> В Пражском Граде</label>
+              <label><input type="radio" name="q2" value="c"> На Староместской площади</label>
+            </div>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="question" data-q="3">
+            <strong>3. Какой собор расположен в Пражском Граде?</strong>
+            <div class="options">
+              <label><input type="radio" name="q3" value="a"> Собор Святого Вита</label>
+              <label><input type="radio" name="q3" value="b"> Собор Святой Марии</label>
+              <label><input type="radio" name="q3" value="c"> Собор Святого Петра</label>
+            </div>
+          </div>
+
+          <!-- Question 4 -->
+          <div class="question" data-q="4">
+            <strong>4. Какая река протекает через Прагу?</strong>
+            <div class="options">
+              <label><input type="radio" name="q4" value="a"> Дунай</label>
+              <label><input type="radio" name="q4" value="b"> Влтава</label>
+              <label><input type="radio" name="q4" value="c"> Эльба</label>
+            </div>
+          </div>
+
+          <!-- Question 5 -->
+          <div class="question" data-q="5">
+            <strong>5. Что чаще всего советуют туристам посетить в Праге на закате?</strong>
+            <div class="options">
+              <label><input type="radio" name="q5" value="a"> Пражский Град</label>
+              <label><input type="radio" name="q5" value="b"> Телебашню</label>
+              <label><input type="radio" name="q5" value="c"> Карлов мост</label>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:10px; margin-top:12px">
+            <button class="btn" onclick="checkQuiz()">Проверить</button>
+            <button class="btn alt" onclick="resetQuiz()">Сбросить</button>
+          </div>
+
+          <div id="quizResult" class="result" aria-live="polite" style="display:none"></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2>О проекте и источники</h2>
+      <div class="card" style="margin-top:12px">
+        <p><strong>Автор:</strong> ФИО ученицы/ученика, 9 класс, <em>школа</em>.</p>
+        <p><strong>Руководитель:</strong> ФИО учителя (если есть).</p>
+        <p><strong>Краткая цель:</strong> развитие интереса к истории и культуре Европы, ознакомление с градостроением Праги.</p>
+
+        <div style="margin-top:12px">
+          <strong>Источники и литература</strong>
+          <div class="sources" style="margin-top:8px">
+            <div class="chip">Краткая история Праги — учебник истории</div>
+            <div class="chip">Муниципальные сайты Праги</div>
+            <div class="chip">Фотографии: авторские / свободные источники</div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px" class="small muted">
+          Примечание: замените заглушки изображений в папке <code>images/</code>. Для вставки видеоролика используйте <code>&lt;iframe&gt;</code> в безопасном режиме (YouTube/Vimeo).
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="container">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap">
+      <div>© 2025 — Экскурсия по Праге · Проект для школы · 9 класс</div>
+      <div class="small">Контакты автора: email@example.com</div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    function toggleMenu(){
+      const menu = document.getElementById('mainMenu');
+      if(menu.style.display === 'flex') menu.style.display = '';
+      else menu.style.display = 'flex';
+      menu.style.flexDirection = 'column';
+      menu.style.gap = '8px';
+    }
+
+    // Quiz logic
+    const answers = {
+      q1: 'b',
+      q2: 'c',
+      q3: 'a',
+      q4: 'b',
+      q5: 'c'
+    };
+
+    function checkQuiz(){
+      const form = document.getElementById('quizForm');
+      let score = 0; let total = Object.keys(answers).length;
+      for(const q of Object.keys(answers)){
+        const sel = form.querySelector(input[name="${q}"]:checked);
+        if(sel && sel.value === answers[q]) score++;
+      }
+      const div = document.getElementById('quizResult');
+      div.style.display = 'block';
+      const percent = Math.round(score / total * 100);
+      let msg = <strong>Результат:</strong> ${score} из ${total} (${percent}%)<br/>;
+      if(percent === 100) msg += '<div style="color:green; font-weight:700; margin-top:6px">Отлично! Ты знаешь Прагу идеально.</div>';
+      else if(percent >= 80) msg += '<div style="color:green; font-weight:700; margin-top:6px">Очень хорошо — почти всё верно.</div>';
+      else if(percent >= 50) msg += '<div style="color:#b56d00; font-weight:700; margin-top:6px">Неплохо, но можно подтянуть знания.</div>';
+      else msg += '<div style="color:#b00000; font-weight:700; margin-top:6px">Стоит повторить материал.</div>';
+
+      // show short review of correct answers
+      msg += '<div style="margin-top:8px; font-size:13px"><strong>Правильные ответы:</strong> 1 — Карлов мост; 2 — Староместская площадь; 3 — Собор Святого Вита; 4 — Влтава; 5 — Карлов мост.</div>';
+
+      div.innerHTML = msg;
+      div.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+
+    function resetQuiz(){
+      document.getElementById('quizForm').reset();
+      const div = document.getElementById('quizResult');
+      div.style.display = 'none';
+      div.innerHTML = '';
+    }
+
+    // Smooth-scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const id = a.getAttribute('href').slice(1);
+        const target = document.getElementById(id);
+        if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+
+    // Accessibility: close menu on resize to desktop
+    window.addEventListener('resize', ()=>{
+      if(window.innerWidth > 980){
+        document.getElementById('mainMenu').style.display = '';
+      }
+    });
+  </script>
+</body>
+</html>
