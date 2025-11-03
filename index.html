@@ -114,6 +114,8 @@
       font-size: 28px;
     }
 
+
+
     .hero p {
       color: var(--muted);
       margin-top: 10px
@@ -380,7 +382,7 @@
   <header>
     <div class="container nav">
       <div class="brand">
-        <div class="logo" aria-hidden="true">EP</div>
+        <div class="logo" aria-hidden="true">ЭпП</div>
         <div>
           <div style="font-weight:800">Экскурсия по Праге</div>
           <div class="small">Проект 9 класс · 2025–2026</div>
@@ -391,12 +393,10 @@
         <button class="menu-toggle" aria-label="Открыть меню" onclick="toggleMenu()">☰</button>
         <nav aria-label="Главное навигационное меню">
           <ul id="mainMenu">
-            <li><a href="#home">Главная</a></li>
-            <li><a href="#history">История</a></li>
-            <li><a href="#route">Маршрут</a></li>
-            <li><a href="#gallery">Галерея</a></li>
-            <li><a href="#quiz">Викторина</a></li>
-            <li><a href="#about">О проекте</a></li>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="index_cropped_BaseTemplate_route.html">Маршрут</a></li>
+            <li><a href="index_cropped_BaseTemplate_quiz.html">Викторина</a></li>
+            <li><a href="index_cropped_BaseTemplate_about.html">О проекте</a></li>
           </ul>
         </nav>
       </div>
@@ -410,10 +410,13 @@
     <!-- HERO -->
     <section id="home" class="card" aria-labelledby="heroTitle">
       <!-- -->
-      <h1 id="heroTitle">Экскурсия по Праге — путеводитель для школьников</h1>
-      <p>Краткая авторская экскурсия самым знаменитым местам Праги: маршруты, исторические сведения и проверочная
-        викторина. </p>
+      <h1 id="heroTitle">Экскурсия по Праге</h1>
+      <h2>Образовательный проект, создающий целостный маршрут по ключевым
+        объектам культурного наследия города.</h2>
+
+
     </section>
+
 
 
 
@@ -421,14 +424,24 @@
       <!-- HERO -->
       <section id="home" class="hero" aria-labelledby="heroTitle">
         <div>
-          <h2 id="heroTitle">Главная Страница</h2>
-          <p>Главная Страница — это средневековый пешеходный мост через реку Влтаву в Праге, соединяющий исторические
-            районы
-            Старе Место и Мала Страна. Он является одной из главных достопримечательностей Чехии, известной своими 30
-            скульптурами и четырьмя башнями, защищающими его с обеих сторон. Длина моста составляет 520 метров </p>
+          <h2 id="heroTitle">Прага</h2>
+          <ol>Точки маршрута:</ol>
+          <dt> - Václavské náměstí (Вацлавская площадь)</dt>
+          <dt> - Staré město (Старый город)</dt>
+          <dt> - Staroměstské náměstí (Староместская площадь)</dt>
+          <dt> - Chrám Matky Boží před Týnem (Тынский храм)</dt>
+          <dt> - Staroměstská radnice (Городская Ратуша)</dt>
+          <dt> - Karlův most (Карлов мост)</dt>
+          <dt> - Pražský hrad (Пражский Град)</li>
+          <dt> - Katedrála Sv. Víta (Собор Святого Вита)</dt>
+          <dt> - Náměstí Republiky (Площадь Республики)</dt>
+          <dt> - Tančící dům (Танцующий дом в Праге)</dt>
+          <dt> - Vyšehrad (Вышеград)</dt>
+          <dt> - Karlštejn (Замок Карлштейн)</dt>
+          <dt> - Kostel sv. Mikuláše (Церковь Святого Николая)</dt>
 
 
-          <img src="" alt="Ссылка-картинка" class="image2" />
+          <img src="praga.jpg" alt="Ссылка-картинка" class="image2" />
 
 
         </div>
@@ -466,49 +479,38 @@
 
 
       <section id="home" class="card" aria-labelledby="heroTitle">
-
         <h2 id="heroTitle">Карлов мост на карте</h2>
 
-
-
-
-
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2559.981181384234!2d14.4101723!3d50.0866392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b94e43baff1c7%3A0xbd61e29ab011fc6!2sKarl%C5%AFv%20most%2C%20Praha%201!5e0!3m2!1sru!2scz!4v1762117534514!5m2!1sru!2scz"
-          width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24360.053714046826!2d14.430899677774416!3d50.076265194927856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b939c0970798b%3A0x400af0f66164090!2z0J_RgNCw0LPQsA!5e0!3m2!1sru!2scz!4v1762188688741!5m2!1sru!2scz"
+          width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-
-        <a href="index_cropped_BaseTemplate_KarluvMost.html">О проекте2</a>
-        <p>Карлов мост на карте. </p>
-        <img src="" alt="Ссылка-картинка" class="image3" />
       </section>
-
-
 
       <!-- ABOUT -->
       <section id="about">
-        <h2>О проекте и источники</h2>
+        <h1>О проекте и источники</h1>
         <div class="card" style="margin-top:12px">
-          <p><strong>Автор:</strong> Кузнецова София Алексанлдровна ученица, 9 класс, <em>школа</em>.</p>
-          <p><strong>Руководитель:</strong> ФИО учителя (если есть).</p>
-          <p><strong>Краткая цель:</strong> развитие интереса к истории и культуре Европы, ознакомление с
-            градостроением Праги.</p>
+          <p><strong>Автор:</strong> Кузнецова Софья Александровна ученица, Класс: 9«а», <em>школа</em>.</p>
+          <p><strong>Руководитель:</strong> Рябцева Юлия Ариевна.</p>
+          <p><strong>Краткая цель:</strong> Создать познавательный и визуально привлекательный экскурсионный маршрут по
+            Праге, который поможет школьникам познакомиться с культурно-историческим наследием Европы и вызвать
+            положительное отношение к европейской культуре.</p>
 
           <div style="margin-top:12px">
             <strong>Источники и литература</strong>
             <div class="sources" style="margin-top:8px">
-              <div class="chip">Краткая история Праги — учебник истории</div>
-              <div class="chip">Муниципальные сайты Праги</div>
-              <div class="chip">Фотографии: авторские / свободные источники</div>
+              <div class="chip">Praha.eu</div>
+              <div class="chip">CzechTourism.com</div>
+              <div class="chip">Hrad.cz</div>
+              <div class="chip">Karlstejn.cz</div>
+              <div class="chip">Wikipedia</div>
+              <div class="chip">Google Maps</div>
             </div>
           </div>
 
-          <div style="margin-top:12px" class="small muted">
-            Примечание: замените заглушки изображений в папке <code>images/</code>. Для вставки видеоролика
-            используйте
-            <code>&lt;iframe&gt;</code> в безопасном режиме (YouTube/Vimeo).
-          </div>
+
         </div>
       </section>
 
@@ -589,4 +591,3 @@
 </body>
 
 </html>
-
