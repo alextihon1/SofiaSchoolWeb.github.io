@@ -3,13 +3,11 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
     content="Экскурсия по Праге — школьный проект. Маршрут, история, интересные факты и викторина." />
   <title>Экскурсия по Праге — проект 9 класс</title>
 
-  <!-- Favicon (замените путь на свой) -->
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
 
   <style>
     :root {
@@ -316,94 +314,21 @@
       color: var(--muted)
     }
 
-    .inner-image-karluvMost {
-      position: relative;
-      top: 145px;
-      left: 150px;
-      width: 66px;
-      height: 37px;
-    }
 
-    .inner-image-Vysehrad {
-      position: relative;
-      top: 560px;
-      left: 200px;
-    }
-
-    .inner-image-KatedralaSvatehoVita {
-      position: relative;
-      top: 110px;
-      left: -100px;
-      width: 56px;
-      height: 89px;
-    }
-
-    .inner-image-KostelSvatehoMikulase {
-      position: relative;
-      top: 430px;
-      left: 330px;
-    }
-
-    .inner-image-Namesti_Republiky {
-      position: relative;
-      top: 110px;
-      left: 80px;
-    }
-
-    .inner-image-PrazskiiHrad {
-      position: relative;
-      top: 80px;
-      left: -180px;
-      width: 40px;
-      height: 63px;
-    }
-
-    .inner-image-StareMesto {
-      position: relative;
-      top: 100px;
-      left: -110px;
-      width: 53px;
-      height: 64px;
-    }
-
-    .inner-image-StaromeskeNamesti2 {
-      position: relative;
-      top: 140px;
-      left: -115px;
-    }
-
-    .inner-image-TanciciDum {
-      position: relative;
-      top: 350px;
-      left: -210px;
-    }
-
-    .inner-image-TynskyHram {
-      position: relative;
-      top: 200px;
-      left: -170px;
-    }
-
-    .inner-image-VaclovskeNamnesti {
-      position: relative;
-      top: -210px;
-      left: -200px;
-    }
-
-    .inner-image-StaromeskaRadnice {
-      position: relative;
-      top: 190px;
-      left: -160px;
-    }
 
 
 
     .image2 {
-      max-width: 100%
+      max-width: 100%;
     }
 
     .image3 {
-      max-width: 100%
+      max-width: 100%;
+    }
+
+    .image4 {
+
+      max-width: 580px;
     }
 
     img {
@@ -411,6 +336,45 @@
     }
   </style>
 </head>
+
+<body>
+
+  <map name="image_map">
+
+    <area alt="Dubova1" title="Ротонда святого Вита" href="index_cropped_BaseTemplate_KatedralaSvatehoVita.html"
+      coords="62,9,105,83" shape="rect">
+
+    <area alt="Dubova1" title="Пражский Град" href="index_cropped_BaseTemplate_PrazskiiHrad.html" coords="110,3,156,73"
+      shape="rect">
+
+    <area alt="Dubova1" title="Карлов мост" href="index_cropped_BaseTemplate_KarluvMost.html" coords="134,103,204,140"
+      shape="rect">
+
+    <area alt="Dubova1" title="Церковь Святого Николая" href="index_cropped_BaseTemplate_KatedralaSvatehoVita.html"
+      coords="52,85,113,151" shape="rect">
+
+    <area alt="Dubova1" title="Площадь Республики" href="index_cropped_BaseTemplate_Namesti Republiky.html"
+      coords="364,36,407,99" shape="rect">
+
+    <area alt="Dubova1" title="Старе-Место" href="index_cropped_BaseTemplate_StareMesto.html" coords="228,40,273,91"
+      shape="rect">
+
+    <area alt="Dubova1" title="Староместская ратуша" href="index_cropped_BaseTemplate_StaromeskaRadnice.html"
+      coords="285,40,323,114" shape="rect">
+
+    <area alt="Dubova1" title="Танцующий дом" href="index_cropped_BaseTemplate_TanciciDum.html" coords="181,264,225,327"
+      shape="rect">
+
+    <area alt="Dubova1" title="Тынский храм" href="index_cropped_BaseTemplate_TynskyHram.html" coords="329,65,363,138"
+      shape="rect">
+
+    <area alt="Dubova1" title="Вацлавская площадь" href="index_cropped_BaseTemplate_VaclovskeNamnesti.html"
+      coords="331,168,363,236" shape="rect">
+
+    <area alt="Dubova1" title="Вышеград" href="index_cropped_BaseTemplate_Vysehrad.html" coords="250,461,314,523"
+      shape="rect">
+
+</body>
 
 <body>
   <header>
@@ -441,10 +405,11 @@
 
 
 
+
   <main class="container">
     <!-- HERO -->
     <section id="home" class="card" aria-labelledby="heroTitle">
-
+      <!-- -->
       <h1 id="heroTitle">Экскурсия по Праге — путеводитель для школьников</h1>
       <p>Краткая авторская экскурсия самым знаменитым местам Праги: маршруты, исторические сведения и проверочная
         викторина. </p>
@@ -469,52 +434,29 @@
 
 
 
-        <aside class="card" aria-label="Быстрая карта и контакты">
+        <aside class="container" aria-label="Быстрая карта и контакты">
           <div style="font-weight:700">Карта центра Праги</div>
           <div style="font-size:13px; color:var(--muted); margin-bottom:8px">Отметки ключевых точек маршрута</div>
           <!-- OpenStreetMap embed (работает без API) -->
           <div style="border-radius:10px; overflow:hidden; margin-bottom:8px; border:1px solid rgba(0,0,0,0.04)">
 
 
-            <a href="index_cropped_BaseTemplate_KarluvMost.html">
-              <img src="images/KarluvMost1.png" alt="Ссылка-картинка" class="inner-image-karluvMost" />
-            </a>
 
 
-
-            <a href="index_cropped_BaseTemplate_Vysehrad.html">
-              <img src="Vysehrad1.png" alt="Ссылка-картинка" class="inner-image-Vysehrad" />
-            </a>
-            <a href="index_cropped_BaseTemplate_KatedralaSvatehoVita.html">
-              <img src="KatedralaSvatehoVita1.png" alt="Ссылка-картинка"
-                class="inner-image-KatedralaSvatehoVita" />
-            </a>
-            <a href="index_cropped_BaseTemplate_KostelSvatehoMikulase.html">
-              <img src="KostelSvatehoMikulase1.png" alt="Ссылка-картинка"
-                class="inner-image-KostelSvatehoMikulase" />
-            </a>
-            <a href="index_cropped_BaseTemplate_Namesti_Republiky.html">
-              <img src="Namesti_Republiky1.png" alt="Ссылка-картинка" class="inner-image-Namesti_Republiky" />
-            </a>
-            <a href="index_cropped_BaseTemplate_PrazskiiHrad.html">
-              <img src="images/PrazskiiHrad1.png" alt="Ссылка-картинка" class="inner-image-PrazskiiHrad" />
-            </a>
-            <a href="index_cropped_BaseTemplate_StareMesto.html">
-              <img src="StareMesto1.png" alt="Ссылка-картинка" class="inner-image-StareMesto" />
-            </a>
-            <a href="index_cropped_BaseTemplate_TanciciDum.html">
-              <img src="TanciciDum1.png" alt="Ссылка-картинка" class="inner-image-TanciciDum" />
-            </a>
-            <a href="index_cropped_BaseTemplate_TynskyHram.html">
-              <img src="TynskyHram1.png" alt="Ссылка-картинка" class="inner-image-TynskyHram" />
-            </a>
-            <a href="index_cropped_BaseTemplate_StaromeskaRadnice.html">
-              <img src="StaromeskaRadnice1.png" alt="Ссылка-картинка" class="inner-image-StaromeskaRadnice" />
-            </a>
-
-            <img src="map.png" alt="" />
 
           </div>
+
+          <div class="container">
+            <img src="mapWithIcons2_580.png" usemap="#image_map" alt="Ссылка-картинка" class="image4" />
+          </div>
+
+          <map name="image_map"></map>
+          <area alt="Dubova1" title="Ротонда святого Вита"
+            href="https://www.google.com/maps/place/%D0%A0%D0%BE%D1%82%D0%BE%D0%BD%D0%B4%D0%B0+%D1%81%D0%B2%D1%8F%D1%82%D0%BE%D0%B3%D0%BE+%D0%92%D0%B8%D1%82%D0%B0/@50.0905906,14.4002854,18.67z/data=!4m14!1m7!3m6!1s0x470b94673d77dd09:0x4c9f4f645f532866!2zVnnFoWVocmFk!8m2!3d50.0628055!4d14.4221552!16zL20vMDNmamxs!3m5!1s0x470b951e38024f5b:0x69ad3850f2d989a2!8m2!3d50.0908918!4d14.4005114!16zL20vMDI3aDN0?hl=ru&entry=ttu&g_ep=EgoyMDI1MTAyOS4yIKXMDSoASAFQAw%3D%3D"
+            coords="62,9,105,83" shape="rect">
+
+
+
           <div class="small muted">Подпись: центр Праги (Пражский Град и Карлов мост находятся в отмеченной области).
           </div>
         </aside>
@@ -525,6 +467,10 @@
       <section id="home" class="card" aria-labelledby="heroTitle">
 
         <h2 id="heroTitle">Карлов мост на карте</h2>
+
+
+
+
 
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2559.981181384234!2d14.4101723!3d50.0866392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b94e43baff1c7%3A0xbd61e29ab011fc6!2sKarl%C5%AFv%20most%2C%20Praha%201!5e0!3m2!1sru!2scz!4v1762117534514!5m2!1sru!2scz"
@@ -640,6 +586,5 @@
       });
     </script>
 </body>
-
 
 </html>
