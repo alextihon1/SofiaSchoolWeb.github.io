@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Экскурсия по Праге — школьный проект. Маршрут, история, интересные факты и викторина." />
+  <title>Экскурсия по Праге — проект 9 класс</title>
+
+
+  <style>
+    :root {
+      --bg: #fbfbfc;
+      --card: #ffffff;
+      --accent: #2f6b8f;
+      --accent-2: #f0a500;
+      --muted: #6b6b6b;
+      --radius: 12px;
+      --maxw: 1100px;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, var(--bg), #f6f8fa);
+      color: #111;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.45;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none
+    }
+
+    header {
+      background: linear-gradient(90deg, rgba(47, 107, 143, 0.06), rgba(240, 165, 0, 0.04));
+      backdrop-filter: blur(4px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .container {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      box-shadow: 0 6px 18px rgba(47, 107, 143, 0.08);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 14px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      align-items: center
+    }
+
+    nav li a {
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.7)
+    }
+
+    nav li a:hover {
+      background: rgba(47, 107, 143, 0.08);
+      color: var(--accent)
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 620px;
+      gap: 28px;
+      align-items: Top;
+      padding: 36px 0;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      margin-top: 10px
+    }
+
+    .cta {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap
+    }
+
+    .btn {
+      background: var(--accent);
+      color: white;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: 700;
+      border: 0;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(47, 107, 143, 0.12)
+    }
+
+    .btn.alt {
+      background: transparent;
+      color: var(--accent);
+      border: 2px solid rgba(47, 107, 143, 0.08);
+      font-weight: 700
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 6px 20px rgba(11, 20, 30, 0.04)
+    }
+
+    .small {
+      font-size: 13px;
+      color: var(--muted)
+    }
+
+    /* grid sections */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 18px
+    }
+
+    .grid .card {
+      min-height: 120px
+    }
+
+    /* Responsive */
+    @media (max-width:980px) {
+      .hero {
+        grid-template-columns: 1fr
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      nav ul {
+        display: none
+      }
+
+      .menu-toggle {
+        display: inline-block
+      }
+    }
+
+    @media (max-width:600px) {
+      .grid {
+        grid-template-columns: 1fr
+      }
+
+      .hero h1 {
+        font-size: 22px
+      }
+
+      .logo {
+        width: 46px;
+        height: 46px
+      }
+    }
+
+    /* content blocks */
+    section {
+      padding: 36px 0
+    }
+
+    h2 {
+      margin: 0 0 12px 0;
+      font-size: 20px
+    }
+
+    .route-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 12px 0;
+      border-bottom: 1px dashed rgba(0, 0, 0, 0.04)
+    }
+
+    .route-meta {
+      font-size: 13px;
+      color: var(--muted)
+    }
+
+    .facts {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap
+    }
+
+    .fact {
+      flex: 1 1 200px;
+      background: linear-gradient(180deg, #fff, #fbfbff);
+      padding: 12px;
+      border-radius: 10px;
+      min-width: 180px
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px
+    }
+
+
+
+    @media (max-width:900px) {
+      .gallery {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    /* quiz */
+    .quiz .question {
+      margin-bottom: 12px
+    }
+
+    .options label {
+      display: block;
+      padding: 8px 10px;
+      margin: 6px 0;
+      border-radius: 8px;
+      background: #fbfbfb;
+      cursor: pointer;
+      border: 1px solid rgba(0, 0, 0, 0.04)
+    }
+
+    .result {
+      padding: 12px;
+      border-radius: 10px;
+      margin-top: 12px
+    }
+
+    .topbar-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center
+    }
+
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 0;
+      font-size: 20px;
+      padding: 8px
+    }
+
+    /* footer */
+    footer {
+      padding: 24px 0;
+      color: var(--muted);
+      font-size: 14px
+    }
+
+    .sources {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap
+    }
+
+    .chip {
+      background: #fff;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.03);
+      font-size: 13px
+    }
+
+    /* small helpers */
+    .muted {
+      color: var(--muted)
+    }
+
+
+
+
+
+    .image2 {
+      max-width: 100%;
+    }
+
+    .image3 {
+      max-width: 100%;
+    }
+
+    .image4 {
+
+      max-width: 580px;
+    }
+
+    img {
+      max-width: 620px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <map name="image_map">
+
+    <area alt="Dubova1" title="Ротонда святого Вита" href="index_cropped_BaseTemplate_KatedralaSvatehoVita.html"
+      coords="62,9,105,83" shape="rect">
+
+    <area alt="Dubova1" title="Пражский Град" href="index_cropped_BaseTemplate_PrazskiiHrad.html" coords="110,3,156,73"
+      shape="rect">
+
+    <area alt="Dubova1" title="Карлов мост" href="index_cropped_BaseTemplate_KarluvMost.html" coords="134,103,204,140"
+      shape="rect">
+
+    <area alt="Dubova1" title="Церковь Святого Николая" href="index_cropped_BaseTemplate_KostelSvatehoMikulase.html"
+      coords="52,85,113,151" shape="rect">
+
+    <area alt="Dubova1" title="Площадь Республики" href="index_cropped_BaseTemplate_Namesti Republiky.html"
+      coords="364,36,407,99" shape="rect">
+
+    <area alt="Dubova1" title="Старе-Место" href="index_cropped_BaseTemplate_StareMesto.html" coords="228,40,273,91"
+      shape="rect">
+
+    <area alt="Dubova1" title="Староместская ратуша" href="index_cropped_BaseTemplate_StaromeskaRadnice.html"
+      coords="285,40,323,114" shape="rect">
+
+    <area alt="Dubova1" title="Танцующий дом" href="index_cropped_BaseTemplate_TanciciDum.html" coords="181,264,225,327"
+      shape="rect">
+
+    <area alt="Dubova1" title="Тынский храм" href="index_cropped_BaseTemplate_TynskyHram.html" coords="329,65,363,138"
+      shape="rect">
+
+    <area alt="Dubova1" title="Вацлавская площадь" href="index_cropped_BaseTemplate_VaclovskeNamnesti.html"
+      coords="331,168,363,236" shape="rect">
+
+    <area alt="Dubova1" title="Вышеград" href="index_cropped_BaseTemplate_Vysehrad.html" coords="250,461,314,523"
+      shape="rect">
+
+</body>
+
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">ЭП</div>
+        <div>
+          <div style="font-weight:800">Экскурсия по Праге</div>
+          <div class="small">Проект 9 класс · 2025–2026</div>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <button class="menu-toggle" aria-label="Открыть меню" onclick="toggleMenu()">☰</button>
+        <nav aria-label="Главное навигационное меню">
+          <ul id="mainMenu">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="index_cropped_BaseTemplate_route.html">Маршрут</a></li>
+            <li><a href="index_cropped_BaseTemplate_quiz.html">Викторина</a></li>
+            <li><a href="index_cropped_BaseTemplate_about.html">О проекте</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+
+
+
+  <main class="container">
+    <!-- HERO -->
+    <section id="home" class="card" aria-labelledby="heroTitle">
+      <!-- -->
+      <h1 id="heroTitle">Экскурсия по Праге</h1>
+      <h2>Образовательный проект, создающий целостный маршрут по ключевым
+        объектам культурного наследия города.</h2>
+    </section>
+
+
+
+    <main class="container">
+      <!-- HERO -->
+      <section id="home" class="hero" aria-labelledby="heroTitle">
+        <div>
+          <h2 id="heroTitle">Городская Ратуша и астрономические часы</h2>
+          <p>Staroměstská radnice Городская Ратуша и астрономические часы — комплекс зданий, построенный в разных
+            стилях. На южной стене ратуши находятся
+            астрономические часы. Самым заметным элементом достопримечательности является высокая башня с готическим
+            шпилем, откуда
+            открывается панорамный вид на Прагу. Астрономические часы состоят из трех основных частей: астрономического
+            циферблата, календарного циферблата и механизма, который каждый час выпускает фигурки апостолов и другие
+            движущиеся элементы: Смерть с песочными часами, Турка и так далее. Часы показывают не только время, но и
+            фазы Луны и положение Солнца.</p>
+
+
+          <img src="StaromeskaRadnice_1.jpg" alt="Ссылка-картинка" class="image2" />
+
+
+        </div>
+
+
+
+        <aside class="container" aria-label="Быстрая карта и контакты">
+          <div style="font-weight:700">Городская Ратуша</div>
+          <div style="font-size:13px; color:var(--muted); margin-bottom:8px">Отметки ключевых точек маршрута</div>
+          <!-- OpenStreetMap embed (работает без API) -->
+          <div style="border-radius:10px; overflow:hidden; margin-bottom:8px; border:1px solid rgba(0,0,0,0.04)">
+
+
+
+
+
+          </div>
+
+          <div class="container">
+            <img src="mapWithIcons2_580.png" usemap="#image_map" alt="Ссылка-картинка" class="image4" />
+          </div>
+
+
+
+
+
+          <div class="small muted">Подпись: центр Праги (Пражский Град и Карлов мост находятся в отмеченной области).
+          </div>
+        </aside>
+      </section>
+
+
+
+      <section id="home" class="card" aria-labelledby="heroTitle">
+        <h2 id="heroTitle">Городская Ратуша на карте</h2>
+
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d380.5396552199497!2d14.420544470929253!3d50.08712085301525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b94e930b83655%3A0xb03c01703d568d5!2z0KHRgtCw0YDQvtC80LXRgdGC0YHQutCw0Y8g0YDQsNGC0YPRiNCw!5e0!3m2!1sru!2scz!4v1762259932891!5m2!1sru!2scz"
+          width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+
+
+      </section>
+
+      <img src="StaromeskaRadnice_2.jpg" alt="Ссылка-картинка" class="image2" />
+
+      <!-- ABOUT -->
+      <section id="about">
+        <h1>О проекте и источники</h1>
+        <div class="card" style="margin-top:12px">
+          <p><strong>Автор:</strong> Кузнецова Софья Александровна ученица, Класс: 9«а», <em>школа</em>.</p>
+          <p><strong>Руководитель:</strong> Рябцева Юлия Ариевна.</p>
+          <p><strong>Краткая цель:</strong> Создать познавательный и визуально привлекательный экскурсионный маршрут по
+            Праге, который поможет школьникам познакомиться с культурно-историческим наследием Европы и вызвать
+            положительное отношение к европейской культуре.</p>
+
+          <div style="margin-top:12px">
+            <strong>Источники и литература</strong>
+            <div class="sources" style="margin-top:8px">
+              <div class="chip">Praha.eu</div>
+              <div class="chip">CzechTourism.com</div>
+              <div class="chip">Hrad.cz</div>
+              <div class="chip">Karlstejn.cz</div>
+              <div class="chip">Wikipedia</div>
+              <div class="chip">Google Maps</div>
+            </div>
+          </div>
+
+
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="container">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap">
+        <div>© 2025 — Экскурсия по Праге · Проект для школы · 9 класс</div>
+        <div class="small">Контакты автора: email@example.com</div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      function toggleMenu() {
+        const menu = document.getElementById('mainMenu');
+        if (menu.style.display === 'flex') menu.style.display = '';
+        else menu.style.display = 'flex';
+        menu.style.flexDirection = 'column';
+        menu.style.gap = '8px';
+      }
+
+      // Quiz logic
+      const answers = {
+        q1: 'b',
+        q2: 'c',
+        q3: 'a',
+        q4: 'b',
+        q5: 'c'
+      };
+
+      function checkQuiz() {
+        const form = document.getElementById('quizForm');
+        let score = 0; let total = Object.keys(answers).length;
+        for (const q of Object.keys(answers)) {
+          const sel = form.querySelector(input[name = "${q}"]: checked);
+          if (sel && sel.value === answers[q]) score++;
+        }
+        const div = document.getElementById('quizResult');
+        div.style.display = 'block';
+        const percent = Math.round(score / total * 100);
+        let msg = <strong>Результат:</strong> ${ score } из ${ total } (${ percent }%) <br />;
+        if (percent === 100) msg += '<div style="color:green; font-weight:700; margin-top:6px">Отлично! Ты знаешь Прагу идеально.</div>';
+        else if (percent >= 80) msg += '<div style="color:green; font-weight:700; margin-top:6px">Очень хорошо — почти всё верно.</div>';
+        else if (percent >= 50) msg += '<div style="color:#b56d00; font-weight:700; margin-top:6px">Неплохо, но можно подтянуть знания.</div>';
+        else msg += '<div style="color:#b00000; font-weight:700; margin-top:6px">Стоит повторить материал.</div>';
+
+        // show short review of correct answers
+        msg += '<div style="margin-top:8px; font-size:13px"><strong>Правильные ответы:</strong> 1 — Карлов мост; 2 — Староместская площадь; 3 — Собор Святого Вита; 4 — Влтава; 5 — Карлов мост.</div>';
+
+        div.innerHTML = msg;
+        div.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      function resetQuiz() {
+        document.getElementById('quizForm').reset();
+        const div = document.getElementById('quizResult');
+        div.style.display = 'none';
+        div.innerHTML = '';
+      }
+
+      // Smooth-scroll for internal links
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', (e) => {
+          const id = a.getAttribute('href').slice(1);
+          const target = document.getElementById(id);
+          if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        });
+      });
+
+      // Accessibility: close menu on resize to desktop
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 980) {
+          document.getElementById('mainMenu').style.display = '';
+        }
+      });
+    </script>
+</body>
+
+</html>
