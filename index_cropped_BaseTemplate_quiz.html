@@ -1,13 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
 <head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Simple Quiz</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description"
+		content="Экскурсия по Праге — школьный проект. Маршрут, история, интересные факты и викторина." />
+	<title>Экскурсия по Праге — проект 9 класс</title>
+
+
+	<style>
+		:root {
+			--bg: #fbfbfc;
+			--card: #ffffff;
+			--accent: #2f6b8f;
+			--accent-2: #f0a500;
+			--muted: #6b6b6b;
+			--radius: 12px;
+			--maxw: 1100px;
+		}
+
+		* {
+			box-sizing: border-box
+		}
+
+		a {
+			color: var(--accent);
+			text-decoration: none
+		}
+
+		header {
+			background: linear-gradient(90deg, rgba(47, 107, 143, 0.06), rgba(240, 165, 0, 0.04));
+			backdrop-filter: blur(4px);
+			position: sticky;
+			top: 0;
+			z-index: 50;
+			border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+		}
+
+		.container {
+			max-width: var(--maxw);
+			margin: 0 auto;
+			padding: 20px;
+		}
+
+		.nav {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 16px;
+		}
+
+		.brand {
+			display: flex;
+			align-items: center;
+			gap: 12px
+		}
+
+		.logo {
+			width: 52px;
+			height: 52px;
+			border-radius: 10px;
+			background: linear-gradient(135deg, var(--accent), var(--accent-2));
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			color: white;
+			font-weight: 700;
+			box-shadow: 0 6px 18px rgba(47, 107, 143, 0.08);
+		}
+
+		nav ul {
+			display: flex;
+			gap: 14px;
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			align-items: center
+		}
+
+		nav li a {
+			padding: 10px 12px;
+			border-radius: 8px;
+			font-weight: 600;
+			color: rgba(0, 0, 0, 0.7)
+		}
+
+		nav li a:hover {
+			background: rgba(47, 107, 143, 0.08);
+			color: var(--accent)
+		}
+
+		.btn {
+			background: var(--accent);
+			color: white;
+			padding: 10px 16px;
+			border-radius: 10px;
+			font-weight: 700;
+			border: 0;
+			cursor: pointer;
+			box-shadow: 0 6px 16px rgba(47, 107, 143, 0.12)
+		}
+
+		.small {
+			font-size: 13px;
+			color: var(--muted)
+		}
+
+		.menu-toggle {
+			display: none;
+			background: transparent;
+			border: 0;
+			font-size: 20px;
+			padding: 8px
+		}
+
+		/* footer */
+		footer {
+			padding: 24px 0;
+			color: var(--muted);
+			font-size: 14px
+		}
+	</style>
 	<link rel="stylesheet" href="./main.css" />
 </head>
+
+
+
+
+
+
+
+
+
+<body>
+
+	<section>
+		<header>
+			<div class="container nav">
+				<div class="brand">
+					<div class="logo" aria-hidden="true">ЭП</div>
+					<div>
+						<div style="font-weight:800">Экскурсия по Праге</div>
+						<div class="small">Проект 9 класс · 2025–2026</div>
+					</div>
+				</div>
+
+				<div class="topbar-actions">
+					<button class="menu-toggle" aria-label="Открыть меню" onclick="toggleMenu()">☰</button>
+					<nav aria-label="Главное навигационное меню">
+						<ul id="mainMenu">
+							<li><a href="index.html">Главная</a></li>
+							<li><a href="index_cropped_BaseTemplate_route.html">Маршрут</a></li>
+							<li><a href="index_cropped_BaseTemplate_quiz.html">Викторина</a></li>
+							<li><a href="index_cropped_BaseTemplate_about.html">О проекте</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+	</section>
+
+</body>
 
 <body>
 
@@ -43,6 +199,18 @@
 	</div>
 
 	<script src="./main.js"></script>
+
+
+
+	<footer class="container">
+		<div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap">
+			<div>© 2025 — Экскурсия по Праге · Проект для школы · 9 класс</div>
+			<div class="small">Контакты автора: email@example.com</div>
+		</div>
+	</footer>
+
+
+
 </body>
 
 </html>

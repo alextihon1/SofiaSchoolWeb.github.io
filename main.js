@@ -1,33 +1,38 @@
 const questions = [
 	{
-		question: "Какой язык работает в браузере?",
-		answers: ["Java", "C", "Python", "JavaScript"],
+		question: "1. Как называется знаменитый мост через Влтаву?",
+		answers: ["Мост Карела", "Карлов мост", "Мост Вацлава", "Янов Мост"],
+		correct: 2,
+	},
+	{
+		question: "2. Где находится Астрономические часы (Орлой)?",
+		answers: [
+			"На Вацлавской площади",
+			"На Староместской площади",
+			"На площади Святой Марии",
+			"В Пражском Граде",
+		],
+		correct: 2,
+	},
+	{
+		question: "3. Какой собор расположен в Пражском Граде?",
+		answers: [
+			"Собор Святого Вацлава",
+			"Собор Святого Петра",
+			"Собор Святой Марии",
+			"Собор Святого Вита",
+		],
 		correct: 4,
 	},
 	{
-		question: "Что означает CSS?",
-		answers: [
-			"Central Style Sheets",
-			"Cascading Style Sheets",
-			"Cascading Simple Sheets",
-			"Cars SUVs Sailboats",
-		],
+		question: "4 Какая река протекает через Прагу?",
+		answers: ["Дунай", "Влтава", "Эльба", "Сена"],
 		correct: 2,
 	},
 	{
-		question: "Что означает HTML?",
-		answers: [
-			"Hypertext Markup Language",
-			"Hypertext Markdown Language",
-			"Hyperloop Machine Language",
-			"Helicopters Terminals Motorboats Lamborginis",
-		],
-		correct: 1,
-	},
-	{
-		question: "В каком году был создан JavaScript?",
-		answers: ["1996", "1995", "1994", "все ответы неверные"],
-		correct: 2,
+		question: "5 Что чаще всего советуют туристам посетить в Праге на закате?",
+		answers: ["Собор Святого Вита", "Пражский Град", "Карлов мост", "Телебашню"],
+		correct: 3,
 	},
 ];
 

@@ -1,11 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap");
 
-* {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-	font-size: inherit;
-}
+
+
+
+
+
+
+
+
 
 body {
 	font-family: "Noto Sans", sans-serif;
@@ -15,10 +17,17 @@ body {
 	background: #fbfbfc;
 	background: linear-gradient(to right, #fbfbfc, #fbd786, #c6ffdd);
 
-	display: flex;
+	display: grid;
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-size: inherit;
 }
 
 .quiz {
