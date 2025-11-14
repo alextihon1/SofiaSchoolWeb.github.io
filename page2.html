@@ -1,46 +1,28 @@
 <!DOCTYPE html>
 <html lan="en">
 
+
+
 <head>
     <meta charset="UTF-8" />
 
 
     <title>HTML5</title>
+
 </head>
 
+
+
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-    }
-
-    video {
-        object-fit: fill;
-        width: 768px;
-        height: 574px;
-    }
-
-    bodyx {
-        display: flex;
-        justify-content: left;
-        align-items: center;
-        min-height: 25vh;
-        background-color: beige;
-    }
-
     body {
-        display: contents;
-
-
-    }
-
-    img {
-
-
-
-        height: 320px;
-        width: auto;
-        object-fit: cover;
+        position: fixed;
+        /* Фиксирует элемент относительно окна браузера */
+        overflow: hidden;
+        /* Скрывает полосы прокрутки, если контент не помещается */
+        width: 100%;
+        /* Растягивает элемент на всю ширину окна */
+        height: 100%;
+        /* Растягивает элемент на всю высоту окна */
     }
 </style>
 
@@ -50,47 +32,33 @@
 
 </head>
 
-<script>
 
 
 
-</script>
 
-<bodyx>
-    <a href="page2.html">
-        <img src="1.gif" alt="Computer man" src="Krot_wizard.mp4">
-    </a>
-    <a href="page2.html">
-        <img src="3.gif" alt="Computer man" src="Krot_wizard.mp4">
-    </a>
-    <a href="page2.html">
-        <img src="2.gif" alt="Computer man" src="Krot_wizard.mp4">
-    </a>
-</bodyx>
 
 
 <body>
 
-    <section>
-
-        <video loop="true" autoplay controls>
-            <source src="Krot_wizard.mp4">
-        </video>
 
 
-        </video>
-
-    </section>
-
-    <section>
+    <img src="2.gif" id="imageUniqueID">
 
 
 
+
+
+
+    <div class="videoClass" id="videoID">
+        <video loop="true" autoplay controls width="500" height="420">
+
+            <source src="1.mp4" id="videoUniqueID">
 
         </video>
 
-    </section>
+    </div>
 
+    <script src="mainVideo.js"></script>
 
 
 </body>
