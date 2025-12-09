@@ -15,6 +15,7 @@
 
 <style>
     body {
+
         position: fixed;
         /* Фиксирует элемент относительно окна браузера */
         overflow: hidden;
@@ -23,6 +24,25 @@
         /* Растягивает элемент на всю ширину окна */
         height: 100%;
         /* Растягивает элемент на всю высоту окна */
+    }
+
+    .img_deg {
+
+        float: left;
+
+    }
+
+    .pos_1 {
+        position: absolute;
+
+        top: 420px;
+    }
+
+    .pos_2 {
+        position: absolute;
+
+        top: 420px;
+        left: 250px;
     }
 </style>
 
@@ -40,23 +60,33 @@
 
 <body>
 
+    <div class="pos_1">
 
+        <img class="img_deg" src="2.gif" id="imageUniqueID">
 
-    <img src="2.gif" id="imageUniqueID">
-
-
-
-
-
-
-    <div class="videoClass" id="videoID">
-        <video loop="true" autoplay controls width="500" height="420">
-
-            <source src="1.mp4" id="videoUniqueID">
-
-        </video>
 
     </div>
+
+    <div class="pos_2">
+
+        <img class="img_deg" src="3.gif" id="imageUniqueID2">
+
+
+    </div>
+
+
+
+    <section>
+        <div class="videoClass">
+            <video loop="true" id="videoID" autoplay controls width="500" height="420">
+
+
+                <source src="1.mp4" id="videoUniqueID">
+
+            </video>
+
+        </div>
+    </section>
 
     <script src="mainVideo.js"></script>
 

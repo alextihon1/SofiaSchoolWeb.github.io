@@ -1,65 +1,84 @@
-
-
-const questionTemplate = document.body.innerHTML;
-
-
 const img = document.getElementById('imageUniqueID')
-const text2 = document.getElementsByClassName('body')
-let makeRandomNumber;
-let previousRandomNumber;
-let CurrentImageNumber = "2.gif";
-let CurrentVideoNumber = "1.mp4";
-
-let NewImageNumber;
-let NewVideoNumber = "2.mp4";
+const img2 = document.getElementById('imageUniqueID2')
 
 
-let firstTimeRun = true;
+var videocontainer = document.getElementById('videoID');
+var videosource = document.getElementById('videoUniqueID');
 
-console.log(img)
+var image1 = document.getElementById('imageUniqueID');
+var image2 = document.getElementById('imageUniqueID2');
 
-function replace() {
-
-
-	previousRandomNumber = makeRandomNumber;
-
-	makeRandomNumber = (Math.floor(Math.random() * (4 - 1)) + 1);
-
-	while (previousRandomNumber === makeRandomNumber) { makeRandomNumber = (Math.floor(Math.random() * (4 - 1)) + 1); }
-
-	NewImageNumber = makeRandomNumber + ".gif";
-
-	console.log("Make Random Number: " + makeRandomNumber)
+let previousgif1 = 2
+let previousgif2 = 3
 
 
 
+//console.log(image1)
+//image1.setAttribute('src', '3.gif')
 
-
-	document.body.innerHTML = "";
-	document.body.innerHTML += questionTemplate
-		.replace(CurrentImageNumber, NewImageNumber)
-		.replace(CurrentVideoNumber, NewVideoNumber);
-
-
-	NewVideoNumber = makeRandomNumber + ".mp4";
+//makeRandomNumber = (Math.floor(Math.random() * (6 - 1)) + 1);
 
 
 
-	const img = document.getElementById('imageUniqueID')
-	img.addEventListener('click', function () {
-
-		//console.log('Click')
-		replace();
-
-	})
-
+function changeVideo(newmp4) {
+	videocontainer.pause();
+	videosource.setAttribute('src', newmp4);
+	videocontainer.load();
+	//videocontainer.setAttribute('poster', newposter); //Changes video poster image
+	videocontainer.play();
 }
+
+function changeImage1(newgif) {
+	image1.setAttribute('src', newgif)
+}
+
+function changeImage2(newgif) {
+	image2.setAttribute('src', newgif)
+}
+
+
+
 
 img.addEventListener('click', function () {
 
-	//console.log('Click')
-	replace();
-	let firstTimeRun = false;
+	makeRandomNumberForVideo = previousgif1;
+	makeRandomNumberForImage = (Math.floor(Math.random() * (6 - 1)) + 1);
+	while (
+		makeRandomNumberForImage == makeRandomNumberForVideo ||
+		makeRandomNumberForImage == previousgif1) {
+		console.log("Current Video and Image Number: " + makeRandomNumberForVideo + " / " + makeRandomNumberForImage + " / " + previousgif1)
+		makeRandomNumberForImage = (Math.floor(Math.random() * (6 - 1)) + 1);
+	}
+
+	previousgif1 = makeRandomNumberForImage;
+
+	var newmp4 = makeRandomNumberForVideo + '.mp4';
+	var newgif = makeRandomNumberForImage + '.gif';
+
+	console.log('Click Image 1')
+	changeVideo(newmp4);
+	changeImage1(newgif)
 
 })
 
+img2.addEventListener('click', function () {
+
+	makeRandomNumberForVideo = previousgif2;
+	makeRandomNumberForImage = (Math.floor(Math.random() * (6 - 1)) + 1);
+	while (
+		makeRandomNumberForImage == makeRandomNumberForVideo ||
+		makeRandomNumberForImage == previousgif2) {
+		console.log("Current Video and Image Number: " + makeRandomNumberForVideo + " / " + makeRandomNumberForImage + " / " + previousgif2)
+		makeRandomNumberForImage = (Math.floor(Math.random() * (6 - 1)) + 1);
+	}
+
+	previousgif2 = makeRandomNumberForImage;
+
+	var newmp4 = makeRandomNumberForVideo + '.mp4';
+	var newgif = makeRandomNumberForImage + '.gif';
+
+	console.log('Click Image 2')
+	changeVideo(newmp4);
+	changeImage2(newgif)
+
+})
