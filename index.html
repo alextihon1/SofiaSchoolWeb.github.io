@@ -336,6 +336,13 @@
     img {
       max-width: 620px;
     }
+
+
+
+        body21 { font-family: sans-serif; text-align: center; padding-top: 50px; }
+        .visit-box21 { border: 2px solid #333; display: inline-block; padding: 2px 8px; border-radius: 5px; width: 300px;}
+        #visit-count21 { font-weight: bold; color: #e44d26; }
+    
   </style>
 </head>
 
@@ -477,6 +484,19 @@
 
       </section>
 
+
+<section>
+<body21>
+    <div class="visit-box21">
+        <h4>Вы посетили эту страницу <span id="visit-count21">0</span> раз</h4>
+    </div>
+<button id="reset">Сбросить счетчик</button>
+</body21>
+
+
+
+</section>
+
       <!-- ABOUT -->
       <section id="about">
         <h1>О проекте и источники</h1>
@@ -513,74 +533,37 @@
     </footer>
 
     <script>
-      // Mobile menu toggle
-      function toggleMenu() {
-        const menu = document.getElementById('mainMenu');
-        if (menu.style.display === 'flex') menu.style.display = '';
-        else menu.style.display = 'flex';
-        menu.style.flexDirection = 'column';
-        menu.style.gap = '8px';
-      }
+             // Функция, которая запускается сразу при загрузке
+        window.onload = function() {
+            const display = document.getElementById('visit-count21');
 
-      // Quiz logic
-      const answers = {
-        q1: 'b',
-        q2: 'c',
-        q3: 'a',
-        q4: 'b',
-        q5: 'c'
-      };
+            // 1. Получаем текущее значение из памяти (или 0, если это первый раз)
+            let visits = parseInt(localStorage.getItem('page_visits')) || 0;
 
-      function checkQuiz() {
-        const form = document.getElementById('quizForm');
-        let score = 0; let total = Object.keys(answers).length;
-        for (const q of Object.keys(answers)) {
-          const sel = form.querySelector(input[name = "${q}"]: checked);
-          if (sel && sel.value === answers[q]) score++;
-        }
-        const div = document.getElementById('quizResult');
-        div.style.display = 'block';
-        const percent = Math.round(score / total * 100);
-        let msg = <strong>Результат:</strong> ${ score } из ${ total } (${ percent }%) <br />;
-        if (percent === 100) msg += '<div style="color:green; font-weight:700; margin-top:6px">Отлично! Ты знаешь Прагу идеально.</div>';
-        else if (percent >= 80) msg += '<div style="color:green; font-weight:700; margin-top:6px">Очень хорошо — почти всё верно.</div>';
-        else if (percent >= 50) msg += '<div style="color:#b56d00; font-weight:700; margin-top:6px">Неплохо, но можно подтянуть знания.</div>';
-        else msg += '<div style="color:#b00000; font-weight:700; margin-top:6px">Стоит повторить материал.</div>';
+            // 2. Увеличиваем счетчик на 1
+            visits++;
 
-        // show short review of correct answers
-        msg += '<div style="margin-top:8px; font-size:13px"><strong>Правильные ответы:</strong> 1 — Карлов мост; 2 — Староместская площадь; 3 — Собор Святого Вита; 4 — Влтава; 5 — Карлов мост.</div>';
+            // 3. Сохраняем обновленное число обратно в память браузера
+            localStorage.setItem('page_visits', visits);
 
-        div.innerHTML = msg;
-        div.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
+            // 4. Выводим результат на экран
+            display.innerText = visits;
+        };
 
-      function resetQuiz() {
-        document.getElementById('quizForm').reset();
-        const div = document.getElementById('quizResult');
-        div.style.display = 'none';
-        div.innerHTML = '';
-      }
 
-      // Smooth-scroll for internal links
-      document.querySelectorAll('a[href^="#"]').forEach(a => {
-        a.addEventListener('click', (e) => {
-          const id = a.getAttribute('href').slice(1);
-          const target = document.getElementById(id);
-          if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-        });
-      });
+// Находим кнопку сброса (если в HTML есть <button id="reset">)
+const resetBtn = document.getElementById('reset');
 
-      // Accessibility: close menu on resize to desktop
-      window.addEventListener('resize', () => {
-        if (window.innerWidth > 980) {
-          document.getElementById('mainMenu').style.display = '';
-        }
-      });
+resetBtn.onclick = function() {
+    localStorage.removeItem('page_visits'); // Удаляем запись из памяти
+    location.reload(); // Перезагружаем страницу, чтобы счетчик стал 1 (или 0)
+};
     </script>
 </body>
 
 
 </html>
+
 
 
 
